@@ -1,0 +1,42 @@
+package com.zcbspay.platform.business.member.service;
+
+import com.zcbspay.platform.business.commons.bean.ResultBean;
+
+public interface PayPwdService {
+	/**
+	 * 验证支付密码  
+	 * @param memberId 会员号
+	 * @param payPwd 支付密码
+	 * @return
+	 * @throws DataCheckFailedException 
+	 */
+	public ResultBean vaildatePayPwd(String memberId,String payPwd);
+	
+	/**
+	 * 修改支付密码
+	 * @param memberId 会员号
+	 * @param orgPayPwd 原始支付密码
+	 * @param payPwd 新支付密码
+	 * @return
+	 * @throws DataCheckFailedException 
+	 */
+	public ResultBean modifyPayPwd(String memberId,String orgPayPwd,String payPwd) ;
+	/**
+	 * 重置支付密码 
+	 * @param memberId 会员号
+	 * @param payPwd 支付密码
+	 * @param smsCode 短信验证码
+	 * @return
+	 * @throws DataCheckFailedException 
+	 */
+	public ResultBean resetPayPwd(String memberId,String payPwd,String smsCode);
+	/**
+	 * 校验绑卡信息和短信验证码（实名后重置支付密码）
+	 * @param memberId 会员号
+	 * @param phone 手机号
+	 * @param smsCode 短信验证码
+	 * @param bindId 绑卡标示
+	 * @param cardNo 银行卡号
+	 */
+	public ResultBean vaildateBankCardForResetPwd(String memberId,String phone,String smsCode,long bindId,String cardNo);
+}
